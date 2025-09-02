@@ -1,0 +1,20 @@
+class Solution {
+    public static void inorder(Node r, HashSet<Integer> set){
+        if(r==null) return;
+        inorder(r.left,set);
+        set.add(r.data);
+        inorder(r.right,set);
+    }
+    public static int countPairs(Node root1, Node root2, int x) {
+        // Code here
+        HashSet<Integer> set1 = new HashSet<>();
+        HashSet<Integer> set2 = new HashSet<>();
+        int c=0;
+        inorder(root1,set1);
+        inorder(root2,set2);
+        for(int i :set1){
+            if(set2.contains(x-i))c++;
+        }
+        return c ;
+    }
+}
