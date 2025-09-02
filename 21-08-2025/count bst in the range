@@ -1,0 +1,19 @@
+class Solution {
+    public static void inorder(Node root,ArrayList<Integer> list){
+        if(root == null){
+            return ;
+        }
+        inorder(root.left,list);
+        list.add(root.data);
+        inorder(root.right,list);
+    }
+    int getCount(Node root, int l, int h) {
+        ArrayList<Integer> list = new ArrayList<>();
+        inorder(root,list);
+        int c=0;
+        for(int i=0;i<list.size();i++){
+            if(list.get(i)>=l && list.get(i)<=h) c++;
+        }
+        return c;
+    }
+}
