@@ -1,0 +1,23 @@
+ public static void inorder(Node r,ArrayList<Integer> list){
+        if(r==null) return;
+        inorder(r.left,list);
+        list.add(r.data);
+        inorder(r.right,list);
+    }
+    public static ArrayList<Integer> findCommon(Node r1, Node r2) {
+       ArrayList<Integer> l1 = new ArrayList<>();
+       ArrayList<Integer> l2 = new ArrayList<>();
+       ArrayList<Integer> ans = new ArrayList<>();
+       HashSet<Integer> set = new HashSet<>();
+       inorder(r1,l1);
+       inorder(r2,l2);
+       for(int i=0;i<l1.size();i++){
+           set.add(l1.get(i));
+       }
+       for(int j=0;j<l2.size();j++){
+           if(set.contains(l2.get(j))){
+               ans.add(l2.get(j));
+           }
+       }
+       return ans;
+    }
